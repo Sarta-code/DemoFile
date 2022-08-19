@@ -1,0 +1,8 @@
+:root {
+  --body_bg: white;
+  --nav_bg: #e9ebec;
+  --nav_color: #333;
+  --main_color: var(--nav_color);
+  --nav_item_color: rgba(0, 0, 0, 0.05);
+  color-scheme: normal;
+}
