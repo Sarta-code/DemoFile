@@ -41,9 +41,14 @@
             el: "#app",
             data() {
                 return {
+
                     message: "你好",
                     model: localStorage.getItem("theme") || "light",
                     icon: localStorage.getItem("icon") || "$",
+                    message: '你好',
+                    status:false,
+                    model: localStorage.getItem('theme') || 'light',
+                    icon: localStorage.getItem('icon') || '$'
                 };
             },
             mounted() {
