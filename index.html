@@ -2,10 +2,10 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/index.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/index.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
     <script src="./vue/vue.js"></script>
     <title>Document</title>
@@ -14,7 +14,8 @@
 <body>
     <div id="topBg" class="loaded"></div>
     <div id="app" ref="appref">
-        <link rel="stylesheet" :href=`./css/`+model+`/index.css`> <!-- -->
+        <link rel="stylesheet" :href=`./css/`+model+`/index.css`>
+        <!-- -->
         <nav ref="navref">
             <div class="left">
                 <div class="logo">Logo</div>
@@ -35,59 +36,63 @@
         </main>
     </div>
 
-
-
     <script>
         var app = new Vue({
-            el: '#app',
+            el: "#app",
             data() {
                 return {
-                    message: '你好',
-                    model: localStorage.getItem('theme') || 'light',
-                    icon: localStorage.getItem('icon') || '$'
+                    message: "你好",
+                    model: localStorage.getItem("theme") || "light",
+                    icon: localStorage.getItem("icon") || "$",
                 };
             },
             mounted() {
-                window.addEventListener('scroll', this.handleScroll)
+                window.addEventListener("scroll", this.handleScroll);
             },
             methods: {
                 switch_mode() {
-                    var temp = localStorage.getItem('theme') == 'light' ? 'dark' : 'light';
-                    var temp1 = localStorage.getItem('icon') == '$' ? '#' : '$';
+                    var temp =
+                        localStorage.getItem("theme") == "light" ? "dark" : "light";
+                    var temp1 = localStorage.getItem("icon") == "$" ? "#" : "$";
                     this.model = temp;
                     this.icon = temp1;
-                    localStorage.setItem('theme', this.model);
-                    localStorage.setItem('icon', this.icon);
+                    localStorage.setItem("theme", this.model);
+                    localStorage.setItem("icon", this.icon);
                 },
                 handleScroll() {
                     var scrollTop =
                         window.pageYOffset ||
                         document.documentElement.scrollTop ||
                         document.body.scrollTop;
-                    var navWidth = this.$refs.navref.offsetHeight
+                    var navWidth = this.$refs.navref.offsetHeight;
                     if (scrollTop > this.$refs.divref.offsetHeight) {
-                        this.$refs.divref2.style.marginTop = navWidth + 'px';
+                        this.$refs.divref2.style.marginTop = navWidth + "px";
                         this.$refs.navref.style.position = "fixed";
                         this.$refs.navref.style.top = 0;
                         this.$refs.navref.style.left = 0;
                         this.$refs.navref.style.backgroundColor = "var(--nav_bg)";
                         this.$refs.navref.style.display = "flex";
-                        this.$refs.navref.setAttribute('class', 'animated fadeInDown delay-.1s');
+                        this.$refs.navref.setAttribute(
+                            "class",
+                            "animated fadeInDown delay-.1s"
+                        );
                     } else {
-                        this.$refs.navref.setAttribute('class', 'animated fadeOutUp delay-.1s');
-                        this.$refs.divref2.style.marginTop = '0px';
+                        this.$refs.navref.setAttribute(
+                            "class",
+                            "animated fadeOutUp delay-.1s"
+                        );
+                        this.$refs.divref2.style.marginTop = "0px";
                         this.$refs.navref.style.position = "";
                         this.$refs.navref.style.backgroundColor = "";
-                        this.$refs.navref.setAttribute('class', '');
-
+                        this.$refs.navref.setAttribute("class", "");
                     }
                 },
                 clickchange() {
-                    this.$refs.h1ref.style.display = this.$refs.h1ref.style.display == 'none' ? 'block' :
-                        'none';
-                }
-            }
-        })
+                    this.$refs.h1ref.style.display =
+                        this.$refs.h1ref.style.display == "none" ? "block" : "none";
+                },
+            },
+        });
     </script>
 </body>
 
