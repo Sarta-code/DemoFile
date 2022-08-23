@@ -23,16 +23,31 @@
             <div class="right">
                 <a href="javascript:void(0)">首页</a>
                 <a href="javascript:void(0)">作品</a>
-                <a href="javascript:void(0)">日志</a>
-                <a href="javascript:void(0)" v-on:click="clickchange()">关于</a>
+                <a data-target="#log">日志</a>
+                <a href="#about" v-on:click="clickchange()">关于</a>
                 <a href="javascript:void(0)" v-on:click="switch_mode()">{{icon}}</a>
+            </div>
+            <div class="mobileright">
+                <a href="javascript:void(0)" v-on:click="switch_mode()">首页</a>
             </div>
         </nav>
         <main>
-            <div ref="divref">
-                <h1 ref="h1ref">HelloWord</h1>
+            <!-- 首页部分 -->
+            <div ref="homeref" id="home">
+                <span>首页</span>
             </div>
-            <div ref="divref2">HelloWord1</div>
+            <!-- 我的作品部分 -->
+            <div ref="workref" id="work">
+                <span>作品</span>
+            </div>
+            <!-- 日志部分 -->
+            <div ref="logref" id="log">
+                <span>日志</span>
+            </div>
+            <!-- 关于我部分 -->
+            <div ref="aboutref" id="about">
+                <span>关于</span>
+            </div>
         </main>
     </div>
 
@@ -41,14 +56,8 @@
             el: "#app",
             data() {
                 return {
-
-                    message: "你好",
                     model: localStorage.getItem("theme") || "light",
                     icon: localStorage.getItem("icon") || "$",
-                    message: '你好',
-                    status:false,
-                    model: localStorage.getItem('theme') || 'light',
-                    icon: localStorage.getItem('icon') || '$'
                 };
             },
             mounted() {
@@ -70,8 +79,8 @@
                         document.documentElement.scrollTop ||
                         document.body.scrollTop;
                     var navWidth = this.$refs.navref.offsetHeight;
-                    if (scrollTop > this.$refs.divref.offsetHeight) {
-                        this.$refs.divref2.style.marginTop = navWidth + "px";
+                    if (scrollTop > this.$refs.homeref.offsetHeight) {
+                        this.$refs.workref.style.marginTop = navWidth + "px";
                         this.$refs.navref.style.position = "fixed";
                         this.$refs.navref.style.top = 0;
                         this.$refs.navref.style.left = 0;
@@ -86,15 +95,17 @@
                             "class",
                             "animated fadeOutUp delay-.1s"
                         );
-                        this.$refs.divref2.style.marginTop = "0px";
+                        this.$refs.workref.style.marginTop = "0px";
                         this.$refs.navref.style.position = "";
                         this.$refs.navref.style.backgroundColor = "";
                         this.$refs.navref.setAttribute("class", "");
                     }
                 },
-                clickchange() {
-                    this.$refs.h1ref.style.display =
-                        this.$refs.h1ref.style.display == "none" ? "block" : "none";
+                clickchange($event) {
+                    // console.log(event);
+                    // document.documentElement.scrollTop =
+                    //   this.$refs.workref.offsetHeight + this.$refs.navref.offsetHeight;
+                    // console.log(document.documentElement.scrollTop);
                 },
             },
         });

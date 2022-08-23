@@ -1,5 +1,5 @@
 :root {
-  --body_bg: white;
+  --body_bg: #ccc;
   --nav_bg: #e9ebec;
   --nav_color: #333;
   --main_color: var(--nav_color);
